@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+   	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Periodico</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<nav>
+        <div class="container">
+        	<table>
+        		<td>
+        			<img src='https://cloud.alqueria.es/wp-content/uploads/sites/13/2012/08/periodico1.png' class='redonded float-left' width="50px" height="50px" />
+        		</td>
+        		<td>
+        			<h1>Periódico 6B</h1></div>
+        		</td>
+        	</table>
+            <ul>
+            <button onclick="location.href='index.html'">Inicio</button>
+            <button onclick="location.href='#'">Salón</button>
+            <button onclick="location.href='#'">Colegio</button>
+            <button onclick="location.href='#'">Región</button>
+            <button onclick="location.href='#'">Tecnología</button>
+            <button onclick="location.href='#'">Farándula</button>
+            <button onclick="location.href='#'">Deportes</button>
+            <button onclick="location.href='#'">Juegos</button>
+            </ul>
+        </div>
+    </nav>
+    <div class="clearfix"></div>
+    <div>
+        <picture >
+        	<img src="http://www.elmundo.com/images/ediciones/Viernes_28_2_2014/Viernes_28_2_2014@@Elecciones-escolares-600.jpg">
+        </picture>
+    </div>
+
+    <h2>Democracia estudiantil – Colegio – 20 de marzo 2021</h2>
+		<p>El 20 de marzo se realizó un proceso democrático para conocer los representantes de los distintos grupos, así como el personero estudiantil que serán las cabezas visibles de los estudiantes ante los distintos estamentos directivos de la institución<br>
+        <a href="#proyectos-size" onclick="showMore()">Ver mas</a></p>
+
+    <h2>Bosque Idol – Colegio – 20 de marzo 2021</h2>
+		<p>Las directivas del colegio definieron que este evento tan importante para la institución se realizará
+		el día 10 de Octubre del presente año. Debido a la pandemia se realizará de manera virtual, con el uso de las nuevas tecnologías. <br>
+        <a href="#proyectos-size" onclick="showMore()">Ver mas</a></p>
+
+    <h2>Alternancia – Colegio – 12 de marzo 2021</h2>
+		<p>El colegio realiza sus trabajos de adecuaciones para volver lo más pronto posible a la alternancia, de ser posible después de la Semana Santa.<br>
+        <a href="#proyectos-size" onclick="showMore()">Ver mas</a></p>
+
+	  <footer class="footer">
+	  	<div class="container">
+	  		<p class="text-muted">Programación Aplicaciones Web - 2018</p>
+	  	</div>
+	  </footer>
+
+	<script type="text/javascript">
+		
+		function cargarJsonNoticias() {
+		  var url = "http://demo6497253.mockable.io/noticias";
+
+		  fetch(url)
+		      .then(response => response.json())
+		      .then(data => generarNoticiasInicio(data))
+		      .catch(error => {});
+		}
+
+		function generarNoticiasInicio(json) {
+		  const noticias = document.getElementById("noticias");
+
+		  for (let i in json) {
+
+		      noticias.innerHTML += `<div><h1>${json[i].titulo}- ${json[i].categoria} - ${json[i].fecha} </h1>
+		                          <h3>${json[i].descripcion}</h3>
+		                          <p>${json[i].detalle}</p>
+		                          <img src='${json[i].img}'></img></div><hr>`
+		  }
+		}
+		cargarJsonNoticias();
+	</script>
+
+
+</body>
+</html>
+
+
